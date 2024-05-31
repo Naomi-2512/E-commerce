@@ -147,7 +147,7 @@
     height: 100%;
     align-items: center;
 }
-.updateButton, .deleteButton, .viewOneButton{
+.updateButton, .deleteButton, .viewOneButton ,.addCartButton{
     background-color: orangered;
     height:30px;
     width: 20%;
@@ -155,7 +155,7 @@
     border: none;
     border-radius: 15%;
 }
-.updateButton:hover, .deleteButton:hover, .viewOneButton:hover{
+.updateButton:hover, .deleteButton:hover, .viewOneButton:hover, .addCartButton:hover{
     background-color: orange;
 }
 .divUpdater{

@@ -20,6 +20,34 @@
       "productName": "Mifi",
       "description": "Huawei Mobile mifi router",
       "amount": "500"
+    },
+    {
+      "id": "1717160166980",
+      "image": "https://i5.walmartimages.com/asr/6d99ce92-cd73-4227-b010-493cf4562a4b.4b0b1f9141251e01f8997ca2c9992cdd.jpeg",
+      "productName": "keyboard",
+      "description": "A wireless keyboard",
+      "amount": "400"
+    },
+    {
+      "id": "1717160365603",
+      "image": "https://i5.walmartimages.com/asr/6d99ce92-cd73-4227-b010-493cf4562a4b.4b0b1f9141251e01f8997ca2c9992cdd.jpeg",
+      "productName": "keyboard",
+      "description": "A wireless keyboard",
+      "amount": "400"
+    },
+    {
+      "id": "1717160512339",
+      "image": "https://www.electronicrecyclingaustralia.com.au/wp-content/uploads/2017/02/images-of-computer-keyboard.jpg",
+      "productName": "tv",
+      "description": "A 32 inch tv",
+      "amount": "4500"
+    },
+    {
+      "id": "1717164536605",
+      "image": "https://www.electronicrecyclingaustralia.com.au/wp-content/uploads/2017/02/images-of-computer-keyboard.jpg",
+      "productName": "tv",
+      "description": "A 32 inch tv",
+      "amount": "500"
     }
   ]
 }

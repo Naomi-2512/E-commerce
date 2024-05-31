@@ -1,4 +1,6 @@
 "use strict";
+// import {Display} from './main';
+// const displayClass = new Display();
 class DisplayItems {
     order;
     identity;
@@ -17,15 +19,20 @@ class DisplayItems {
     amountStorage = document.querySelector('#uploaderAmount');
     closeButton = document.querySelector('#close');
     saveButton = document.querySelector('#save');
+    productsDisplay = document.querySelector('.productsDisplay');
     constructor() {
         this.displayItems();
+        this.userDisplay();
+        this.fetchProductsUser();
         this.viewAllButton.addEventListener('click', (event) => {
             console.log('view');
             event.preventDefault();
             this.displayItems();
+            // this.userDisplay();
         });
         this.createButton.addEventListener('click', (event) => {
-            this.displayItems();
+            // this.displayItems();
+            // this.userDisplay();
             event.preventDefault();
             let productInput = this.productUpload.value;
             let descriptionInput = this.descriptionUpload.value;
@@ -169,6 +176,69 @@ class DisplayItems {
             // console.error('error in displaying', error);
         }
     }
+    async fetchProductsUser() {
+        const response = await fetch(`http://localhost:3000/holder`);
+        const data = await response.json();
+        return data;
+    }
+    async userDisplay() {
+        try {
+            let displayItems = await this.fetchProductsUser();
+            // let tester = [
+            //     {
+            //       "id": "1717068720835",
+            //       "image": "https://i5.walmartimages.com/asr/6d99ce92-cd73-4227-b010-493cf4562a4b.4b0b1f9141251e01f8997ca2c9992cdd.jpeg",
+            //       "productName": "high-heels",
+            //       "description": "low heel pumps for women",
+            //       "amount": "700"
+            //     },
+            //     {
+            //       "id": "1717069286564",
+            //       "image": "https://th.bing.com/th/id/OIP.pdQMcUl3QhV1HFPGeEAxsQHaHa?w=180&h=180&c=7&r=0&o=5&pid=1.7",
+            //       "productName": "socks",
+            //       "description": "school socks",
+            //       "amount": "200"
+            //     }
+            // ]
+            // console.log(displayItems);
+            // this.removeProducts();
+            displayItems.map((element, index) => {
+                let myId = element.id;
+                let displayer = document.createElement('div');
+                displayer.className = 'displayer';
+                let inputImage = document.createElement('div');
+                inputImage.className = 'inputImage';
+                let inputDetails = document.createElement('div');
+                inputDetails.className = 'inputDetails';
+                let inputButton = document.createElement('div');
+                inputButton.className = 'inputButton';
+                let imageHolder = document.createElement('img');
+                imageHolder.setAttribute('src', `${element.image}`);
+                imageHolder.className = 'imageHolder';
+                let inputProduct = document.createElement('h2');
+                inputProduct.textContent = `${element.productName}`;
+                let inputDescription = document.createElement('h2');
+                inputDescription.textContent = `${element.description}`;
+                let inputAmount = document.createElement('h2');
+                inputAmount.textContent = `ksh ${element.amount}`;
+                let addCartButton = document.createElement('button');
+                addCartButton.textContent = "Add to cart";
+                addCartButton.className = 'addCartButton';
+                displayer.appendChild(inputImage);
+                displayer.appendChild(inputDetails);
+                displayer.appendChild(inputButton);
+                inputImage.appendChild(imageHolder);
+                inputDetails.appendChild(inputProduct);
+                inputDetails.appendChild(inputDescription);
+                inputDetails.appendChild(inputAmount);
+                inputButton.appendChild(addCartButton);
+                this.productsDisplay.appendChild(displayer);
+            });
+        }
+        catch (error) {
+            console.error('error in displaying', error);
+        }
+    }
     async displayItemsByName(name, myIdentity) {
         try {
             let returnArray = await Display.getItemsByproductName(name);
@@ -244,3 +314,4 @@ class DisplayItems {
 }
 let displaying = new DisplayItems();
 displaying.displayItems();
+displaying.userDisplay();
