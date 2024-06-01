@@ -4,6 +4,8 @@
 class DisplayItems{
     order?:Partial<Items>;
     identity!: string;
+    indexer:number = 0;
+    myArray: Items[] = [];
     
 
     imageUpload = document.querySelector('#uploadImage') as HTMLInputElement;
@@ -23,6 +25,8 @@ class DisplayItems{
     closeButton =document.querySelector('#close') as HTMLButtonElement;
     saveButton =document.querySelector('#save') as HTMLButtonElement ;
     productsDisplay = document.querySelector('.productsDisplay') as HTMLDivElement;
+    indexing = document.querySelector('.indexing') as HTMLParagraphElement;
+    addCartButton = document.querySelector('.addCartButton')
 
     constructor (){
         this.displayItems();
@@ -293,6 +297,18 @@ class DisplayItems{
                 inputDetails.appendChild(inputAmount);
                 inputButton.appendChild(addCartButton);
                 this.productsDisplay.appendChild(displayer);
+
+                addCartButton.addEventListener('click', ()=>{
+                    this.indexer +=1;
+                    this.indexing.textContent = `${this.indexer}`;
+                    this.myArray.push(element);
+                    console.log(this.myArray);
+                    
+                    console.log('clicked');
+                    
+                    this.indexing.style.color = 'red';
+                    this.indexing.style.fontWeight = '800';
+                })
 
             })
             

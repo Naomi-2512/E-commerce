@@ -4,6 +4,8 @@
 class DisplayItems {
     order;
     identity;
+    indexer = 0;
+    myArray = [];
     imageUpload = document.querySelector('#uploadImage');
     productUpload = document.querySelector('#uploadProduct');
     descriptionUpload = document.querySelector('#uploadDescription');
@@ -20,6 +22,8 @@ class DisplayItems {
     closeButton = document.querySelector('#close');
     saveButton = document.querySelector('#save');
     productsDisplay = document.querySelector('.productsDisplay');
+    indexing = document.querySelector('.indexing');
+    addCartButton = document.querySelector('.addCartButton');
     constructor() {
         this.displayItems();
         this.userDisplay();
@@ -233,6 +237,15 @@ class DisplayItems {
                 inputDetails.appendChild(inputAmount);
                 inputButton.appendChild(addCartButton);
                 this.productsDisplay.appendChild(displayer);
+                addCartButton.addEventListener('click', () => {
+                    this.indexer += 1;
+                    this.indexing.textContent = `${this.indexer}`;
+                    this.myArray.push(element);
+                    console.log(this.myArray);
+                    console.log('clicked');
+                    this.indexing.style.color = 'red';
+                    this.indexing.style.fontWeight = '800';
+                });
             });
         }
         catch (error) {
